@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 	res.send("hey got back response");
 })
 
-gameTimerJson = {
+var gameTimerJson = {
 	TimerText: 0,
 }
 
@@ -235,7 +235,7 @@ io.on("connection", (socket) => {
 		socket.broadcast.emit('other player disconnected', currentPlayer);
 		console.log(currentPlayer.Name + ' bcst: other player disconnected ' + JSON.stringify(currentPlayer));
 
-		disconnectedClientIndex = -1;
+		let disconnectedClientIndex = -1;
 
 		for (var i = 0; i < clients.length; i++) {
 			if (clients[i].Id === currentPlayer.Id) {
