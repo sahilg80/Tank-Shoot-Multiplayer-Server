@@ -48,13 +48,16 @@ function startCountdown() {
 function runGameOver() {
 
 	let maxKills = 0;
-	let maxKillsPlayer;
+	let maxKillsPlayer = null;
 	for (let i = 0; i < clients.length; i++) {
 		if (maxKills <= clients[i].Kills) {
 			maxKills = clients[i].Kills;
 			maxKillsPlayer = clients[i];
 		}
 	}
+
+	if(!maxKillsPlayer)
+		return;
 
 	gameOverData = {
 		WinnerName: maxKillsPlayer.Name,
